@@ -7,54 +7,64 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #000;
+            background-color: #000000;
             color: #FFA500;
             line-height: 1.6;
             padding: 20px;
+            margin: 0;
         }
         .container {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
-
         }
-
-
         h1, h2 {
             color: #FFA500;
         }
         .authors {
             font-style: italic;
+            margin-bottom: 10px;
         }
         .affiliations {
             font-size: 0.9em;
+            margin-bottom: 20px;
         }
         .buttons {
-            margin-top: 20px;
+            margin: 20px 0;
         }
         .button {
             display: inline-block;
             padding: 10px 20px;
             background-color: #FFA500;
-            color: #000;
+            color: #000000;
             text-decoration: none;
-            margin-right: 10px;
+            margin: 5px;
             border-radius: 5px;
         }
         .video-container {
-        position: relative;
-        width: 80%;
-         max-width: 560px;
-        padding-bottom: 56.25%; /* 16:9 aspect ratio */
-        margin: 30px 0;
+            position: relative;
+            width: 80%;
+            max-width: 560px;
+            margin: 30px auto;
         }
-        
+        .video-container::before {
+            content: "";
+            display: block;
+            padding-top: 56.25%;
+        }
         .video-container iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+        }
+        .description {
+            text-align: left;
+            background-color: #1A1A1A;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
         }
     </style>
 </head>
@@ -75,6 +85,19 @@
     </div>
     <div align="center">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/qBBrs1-Rz6A" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="description">
+            <h2>Description</h2>
+            <p>
+                We introduce [Your Project Name]: a novel approach that combines automatic iterative
+                prompting with program verification to ensure programs written in domain-specific
+                languages are syntactically valid and incorporate environment constraints.
+            </p>
+            <p>
+                [Add more details about your project here. You can discuss its key features,
+                methodology, results, and potential applications. Use multiple paragraphs as needed
+                to provide a comprehensive overview of your work.]
+            </p>
     </div>
 </body>
 </html>
