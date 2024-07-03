@@ -108,8 +108,68 @@
                 
                 <li><strong>Fine-tuning and model improvements:</strong> After correcting the generate model based on iterative reasoning and additional inputs, the validated results get stored and after gathering enough validated models, we can use them to fine-tune our LLMs.</li>
             </ol>
-        
-            <h3>Main System Design</h3>
+            <h3> Distribution of one use case resolution</h3>
+            <p>
+        The following table depicts the distribution of use case resolutions for each model. 
+        These statistics were collected based on the resolution rate of one use case over 40 iterations by our top-performing models.
+    </p>
+    <table>
+        <tr>
+            <th>Model</th>
+            <th>Context provided</th>
+            <th>Correct output</th>
+            <th>N</th>
+        </tr>
+        <tr>
+            <td rowspan="3">GPT-4o</td>
+            <td>Zero-Shot</td>
+            <td>0</td>
+            <td>40</td>
+        </tr>
+        <tr>
+            <td>Our prompt</td>
+            <td>2</td>
+            <td>40</td>
+        </tr>
+        <tr>
+            <td>Iterative Prompting</td>
+            <td>32</td>
+            <td>40</td>
+        </tr>
+        <tr>
+            <td rowspan="3">meta-llama/Meta-Llama-3-70B-Instruct</td>
+            <td>Zero-Shot</td>
+            <td>0</td>
+            <td>40</td>
+        </tr>
+        <tr>
+            <td>Our Prompt</td>
+            <td>21</td>
+            <td>40</td>
+        </tr>
+        <tr>
+            <td>Iterative Prompting</td>
+            <td>30</td>
+            <td>40</td>
+        </tr>
+        <tr>
+            <td rowspan="3">mistralai/Mixtral-8x7B-Instruct-v0.1</td>
+            <td>Zero-Shot</td>
+            <td>0</td>
+            <td>40</td>
+        </tr>
+        <tr>
+            <td>Our Prompt</td>
+            <td>8</td>
+            <td>40</td>
+        </tr>
+        <tr>
+            <td>Iterative Prompting</td>
+            <td>18</td>
+            <td>40</td>
+        </tr>
+    </table>
+            <h3>Fine-Tuning Job</h3>
 
             <p>To improve our model's performance, we conducted a fine-tuning process:</p>
             <ul>
