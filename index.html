@@ -132,10 +132,9 @@
         <li><strong>Model Validation:</strong>
             <p>The process involves:</p>
             <ul>
-                <li>"One-shot" meta-model generation based on input parameters</li>
                 <li>Parsing using domain grammar to check for syntactic errors</li>
                 <li>Human intervention for semantics checking if no syntactic errors are found</li>
-                <li>Iterative prompting with LLM agents to fix syntactic errors</li>
+                <li>Iterative prompting with LLM agents to fix syntactic errors if present</li>
             </ul>
         </li>
         
@@ -146,14 +145,14 @@
         <li><strong>Ambiguity Resolution:</strong>
             <p>For unresolved ambiguities or validation failures, we re-prompt the LLM with:</p>
             <ul>
-                <li>The occurred error</li>
+                <li>The occurred errors</li>
                 <li>Possible additional description from the user</li>
                 <li>Access to external tools (e.g., API search calls, documentation) to enhance understanding</li>
             </ul>
         </li>
         
         <li><strong>Fine-tuning and Model Improvements:</strong>
-            <p>Validated results are stored and used to fine-tune our LLMs after gathering sufficient validated models.</p>
+            <p>Validated results that were stored are used to fine-tune our LLMs after gathering sufficient validated models.</p>
         </li>
     </ol>
             <h3> Distribution of one use case resolution</h3>
