@@ -95,7 +95,7 @@
         </div>
         <div class="buttons">
             <a href="https://www.youtube.com/watch?v=qBBrs1-Rz6A&t=3s" class="button">YouTube</a>
-            <a href="" class="button">GitHub</a>
+            <a href="https://verymadsoul-ecore-gen.hf.space" class="button">HF Space</a>
         </div>
         <!-- Add more content about your paper here -->
     </div>
@@ -111,18 +111,51 @@
             </p>
             <h3>Main System Design</h3>
             <ol>
-                <li><strong>Input Prompt and NLD:</strong> Our solution begins with an input prompt containing the natural language description along with syntactic and semantic constraints, providing essential information for model generation. For our prompt we couple many prompting techniques; similar to grammar prompting, also COT and tool use.</li>
-                
-                <li><strong>Ecore Model Generation:</strong> The LLM processes the input prompt and specification sheet to generate an Ecore model by LLM inference. After parsing the technical file markers and extracting relevant concepts, entities, attributes, and relationships, the LLM builds a structured model adhering to the Ecore format.</li>
-                
-                <li><strong>Model Validation:</strong> Initially, a meta-model is created based on the NLD. This model is then parsed using the domain grammar to check for syntactic errors. If no errors are found, the process terminates. However, if syntactic errors are detected, the algorithm iteratively addresses each error. For each identified error, the meta-model along with the error details are passed to a LLM. The LLM is then prompted to suggest fixes for these errors. The meta-model is updated with the suggested corrections, and the parsing process is repeated. This cycle continues until the meta-model is free of syntactic errors, ensuring a validated and syntactically correct meta-model.</li>
-                
-                <li><strong>Database Storage for Use Cases:</strong> Validated models are stored in a database for further analysis and fine-tuning of the LLM. This repository of use cases facilitates iterative refinement of the model, enabling continuous improvement based on feedback and real-world application scenarios.</li>
-                
-                <li><strong>Iterative Reasoning for Ambiguity Resolution:</strong> In cases where the generated model fails the validation step or encounters ambiguity, our solution employs iterative prompting. This iterative process involves reprompting the LLM with a prompt coupled with the occurring error, enabling it to revisit and refine its understanding of the domain context. Additionally, access to external tools such as API search calls and documentation enhances the LLM's comprehension and resolution of ambiguous requests.</li>
-                
-                <li><strong>Fine-tuning and model improvements:</strong> After correcting the generate model based on iterative reasoning and additional inputs, the validated results get stored and after gathering enough validated models, we can use them to fine-tune our LLMs.</li>
-            </ol>
+        <li><strong>Specific Prompt:</strong>
+            <p>Our solution starts with an input prompt holding two parameters:</p>
+            <ul>
+                <li>The Natural Language Description (NLD) of a future DSL including user requirements and semantics' constraints</li>
+                <li>Document type definition on a specific modelling language (e.g., Ecore definition file)</li>
+            </ul>
+            <p>We combine multiple prompting techniques: grammar prompting, Chain-of-Thought (COT), and tool use, to increase prompting quality.</p>
+        </li>
+        
+        <li><strong>Output Generation:</strong>
+            <p>The LLM processes the input prompt to generate the serialized result (in XMI format) by LLM inference. For Ecore meta-model as target output, the inference:</p>
+            <ul>
+                <li>Parses Ecore language markers</li>
+                <li>Extracts relevant concepts, entities, attributes, and relationships</li>
+                <li>Builds structural model adhering to Ecore syntax</li>
+            </ul>
+        </li>
+        
+        <li><strong>Model Validation:</strong>
+            <p>The process involves:</p>
+            <ul>
+                <li>"One-shot" meta-model generation based on input parameters</li>
+                <li>Parsing using domain grammar to check for syntactic errors</li>
+                <li>Human intervention for semantics checking if no syntactic errors are found</li>
+                <li>Iterative prompting with LLM agents to fix syntactic errors</li>
+            </ul>
+        </li>
+        
+        <li><strong>Database Storage for Use Cases:</strong>
+            <p>Validated outputs are stored in a database for further analysis and fine-tuning of the LLM, facilitating iterative refinement based on feedback and real-world scenarios.</p>
+        </li>
+        
+        <li><strong>Ambiguity Resolution:</strong>
+            <p>For unresolved ambiguities or validation failures, we re-prompt the LLM with:</p>
+            <ul>
+                <li>The occurred error</li>
+                <li>Possible additional description from the user</li>
+                <li>Access to external tools (e.g., API search calls, documentation) to enhance understanding</li>
+            </ul>
+        </li>
+        
+        <li><strong>Fine-tuning and Model Improvements:</strong>
+            <p>Validated results are stored and used to fine-tune our LLMs after gathering sufficient validated models.</p>
+        </li>
+    </ol>
             <h3> Distribution of one use case resolution</h3>
             <p>
         The following table depicts the distribution of use case resolutions for each model. 
