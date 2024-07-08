@@ -13,13 +13,26 @@
             padding: 20px;
             margin: 0;
         }
+        @keyframes slideIn {
+          0% {
+            transform: translateY(-100%);
+            opacity: 0;
+          }
+          100% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+        
+        .animated-title {
+          animation: slideIn 1s ease-out forwards;
+        }
         .container {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
         }
         h1, h2, h3 {
-            align: center;
             color: #FFA500;
         }
         .authors {
@@ -87,7 +100,9 @@
 </head>
 <body>
     <div class="container">
-        <h1>MDE in the era of Generative AI</h1>
+        <h1 class="animated-title">MDE in the era of Generative AI/h1>
+
+
         <div class="authors">
              Ahmed ALAOUI MDAGHRI<sup>1,2</sup>, Meriem OUEDERNI<sup>2</sup>, Lotfi CHAARI<sup>2</sup>
         </div>
@@ -288,6 +303,13 @@
     	width="1200"
     	height="450"></iframe>
     </div>
-
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelector('.animated-title').style.opacity = '0';
+    setTimeout(() => {
+      document.querySelector('.animated-title').style.opacity = '1';
+    }, 100);
+  });
+</script>
 </body>
 </html>
